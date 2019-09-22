@@ -1,6 +1,8 @@
 import requests
 import pprint
 import json
+import base64
+
 headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
@@ -17,4 +19,5 @@ pp = pprint.PrettyPrinter(indent=1)
 code =jj['txs'][0]['vout'][1]['scriptPubKey']['asm']
 parts=code.split(" ")
 message=parts[1].decode("hex")
+message=base64.b64decode(message)
 print message

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<body style="background-image: url('../static/images/bg-01.jpg')">
+<h3 style="font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:32px;color:#FFFFFF;">Your data:</h3>
+<article class="media content-section">
+  <div class="media-body" >
+      <div class="article-metadata">
+        <h2><a class="mr-2">Owner</a></h2>
+        <h2><small class="text-muted">{{owner}}</small></h2>
+        <br>
+        <h2><a class="mr-2">Balance</a></h2>
+        <h2><small class="text-muted">{{balance}}</small></h2>
+        <br>
+      </div>
+    </div>
+  </article>
+</body>
+{% endblock content %}

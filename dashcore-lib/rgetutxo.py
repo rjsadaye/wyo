@@ -50,7 +50,7 @@ headers = {
 'Content-Type':'application/json',
 'Accept':'application/json'
 }
-pk='cQpeiT7b6ht9zyrWJtwQ5X9npZdPpT9uRk2Y5AWSgCxbf41gnkjo'
+pk='cMszCbzTUCzYCanQRHeXY5FC1E6qrYWWezHNLB8HbPA7rDNCRHVN'
 
 
 r = requests.get('https://api.chainrider.io/v1/dash/testnet/addr/'+addr1+'/utxo',
@@ -59,20 +59,19 @@ r = requests.get('https://api.chainrider.io/v1/dash/testnet/addr/'+addr1+'/utxo'
 
 #print r.json()
 
-
 jj=r.json()
-
 for i in jj:
     if i['satoshis']>0:
-        single=i
+        single=jj[0]
         txid=single['txid']
         outindex=single['vout']
         address=single['address']
         script=single['scriptPubKey']
         satoshis=single['satoshis']
-        single=jj[0]
         print single
-        break
+
+        
+#single=jj[0]
 
 #txid=single['txid']
 #outindex=single['vout']
@@ -107,6 +106,9 @@ r = requests.post(url='https://api.chainrider.io/v1/dash/testnet/tx/send',
     # print r.text
   # print r.status_code
 print r.text+'\n'+str(r.status_code)
+out=os.popen('python /home/rsadaye/wyo/rtxbyadress.py').read()
+print out
+
   # return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
   # return json.dumps({'success':False}), 400, {'ContentType':'application/json'}
 
